@@ -1,0 +1,204 @@
+Script started on 2023-02-19 12:38:13-05:00
+]777;notify;Command completed;exit]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;exit]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;exit]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ lab manage-storage start
+
+Setting up workstation for the Guided Exercise: Persisting a MySQL Database
+
+ · Checking podman configuration...............................  [1;36mSUCCESS[0;39m
+ · Check if the directory used by lab is not created...........  [1;36mSUCCESS[0;39m
+]777;notify;Command completed;lab manage-storage start]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;lab manage-storage start]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;lab manage-storage start]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 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[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K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[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmkdir -vp /home/student/local/mysql
+mkdir: created directory '/home/student/local/mysql'
+]777;notify;Command completed;mkdir -vp /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mkdir -vp /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mkdir -vp /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ sudo semanage fcontext -a \
+>  -t container_file_t '/home/student/local/mysql(/.*)?'
+]777;notify;Command completed;sudo semanage fcontext -a  -t container_file_t '/home/student/local/mysql(/.*)?']0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;sudo semanage fcontext -a  -t container_file_t '/home/student/local/mysql(/.*)?']0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;sudo semanage fcontext -a  -t container_file_t '/home/student/local/mysql(/.*)?']0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ sudo restorecon -R /home/student/local/mysql
+]777;notify;Command completed;sudo restorecon -R /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;sudo restorecon -R /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ ls -ldZ /home/student/local/mysql
+drwxrwxr-x. 2 student student unconfined_u:object_r:container_file_t:s0 6 Feb 19 12:39 [0m[38;5;33m/home/student/local/mysql[0m
+]777;notify;Command completed;ls -ldZ /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;ls -ldZ /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;ls -ldZ /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ podman unshare chown 27:27 /home/student/local/mysql
+]777;notify;Command completed;podman unshare chown 27:27 /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman unshare chown 27:27 /home/student/local/mysql]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ podman pull registry.redhat.io/rhel8/mysql-80:1
+Trying to pull registry.redhat.io/rhel8/mysql-80:1...
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob ea0a20a2c448 [--------------------------------------] 0.0b / 0.0b
+[1A[JCopying blob ea0a20a2c448 skipped: already exists  
+[1A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b [--------------------------------------] 0.0b / 0.0b
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=>------------------------------------] 6.4MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [===>----------------------------------] 12.3MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=====>--------------------------------] 19.3MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=======>------------------------------] 26.9MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [==========>---------------------------] 33.8MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [============>-------------------------] 41.8MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [==============>-----------------------] 49.5MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=================>--------------------] 56.4MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [===================>------------------] 63.2MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=====================>----------------] 70.0MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=======================>--------------] 76.2MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=========================>------------] 82.8MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [===========================>----------] 90.3MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=============================>--------] 97.2MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [===============================>------] 104.1MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=================================>----] 110.4MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [===================================>--] 116.1MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [======================================] 122.0MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+Copying config ae055a002c [======================================] 17.8KiB / 17.8KiB
+[1A[JCopying config ae055a002c done  
+Writing manifest to image destination
+Storing signatures
+ae055a002c9365cf7599f57a4189cee9f0f03710c4aba4a96e876e04a452e1cf
+]777;notify;Command completed;podman pull registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman pull registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ podman run --name persist-db \
+>  -d -v /home/student/local/mysql:/var/lib/mysql/data \
+>  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 \
+>  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 \
+>  registry.redhat.io/rhel8/mysql-80:1
+cf95124c49f14da622deb6c7c0e74fa73ab0580d7bafd1618df7ba222e4841a0
+]777;notify;Command completed;podman run --name persist-db  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman run --name persist-db  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman run --name persist-db  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ podman ps --format="{{.ID}} {{.Names}} {{.Status}}"
+cf95124c49f1 persist-db Up 22 seconds ago
+]777;notify;Command completed;podman ps --format="{{.ID}} {{.Names}} {{.Status}}"]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps --format="{{.ID}} {{.Names}} {{.Status}}"]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ ls -ld /home/student/local/mysql/items
+drwxr-x---. 2 100026 100026 6 Feb 19 12:41 [0m[38;5;33m/home/student/local/mysql/items[0m
+]777;notify;Command completed;ls -ld /home/student/local/mysql/items]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;ls -ld /home/student/local/mysql/items]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ podman unshare ls -ld /home/student/local/mysql/items
+drwxr-x---. 2 27 27 6 Feb 19 12:41 /home/student/local/mysql/items
+]777;notify;Command completed;podman unshare ls -ld /home/student/local/mysql/items]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman unshare ls -ld /home/student/local/mysql/items]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ lab manage-storage finish
+
+Completing the Guided Exercise: Persisting a MySQL Database
+
+ · Stopping 'persist-db' container.............................  [1;36mSUCCESS[0;39m
+ · Removing 'persist-db' container.............................  [1;36mSUCCESS[0;39m
+ · Removing the 'registry.redhat.io/rhel8/mysql-80:1' image....  [1;36mSUCCESS[0;39m
+ · Removing the /home/student/local/mysql directory............  [1;36mSUCCESS[0;39m
+ · Removing the fcontext for /home/student/local/mysql.........  [1;36mSUCCESS[0;39m
+]777;notify;Command completed;lab manage-storage finish]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;lab manage-storage finish]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;lab manage-storage finish]0;student@workstation:~/git/DO180-apps/chap3]7;file://workstation.lab.example.com/home/student/git/DO180-apps/chap3[student@workstation chap3]$  d[K[Kcd ..
+]777;notify;Command completed;cd ..]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ 
+]777;notify;Command completed;cd ..]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ 
+]777;notify;Command completed;cd ..]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ goitr[K[K[K[Kit add /.[K[K.
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ 
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ 
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ [12P(reverse-i-search)`':[Cc': cd ..o': sudo restorecon -R /home/student/local/mysqlm':  podman run --rm --name asuser -it  registry.access.redhat.com/ubi8:latest /bin/bash[9@[student@workstation DO180-apps]$[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C^C
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ ^C
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ [12P(reverse-i-search)`':[Cc': cd ..o': sudo restorecon -R /home/student/local/mysqlm':  podman run --rm --name asuser -it  registry.access.redhat.com/ubi8:latest /bin/bash[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[46Pm': podman commit epic_mclean syam_custom[1@i[C[C[C[C[C[C[C[C[C[C[1@t[C[C[C[C[C[C[C[C[C[C^C
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ ^C
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ ^C
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ [12P(reverse-i-search)`':[Cg': git add .[1@i[C[C[C[1@t[C[C[C[1@ [C[C[Cc': git commit -am "Added start up script"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@o[C[C[C[6@[student@workstation DO180-apps]$[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[K[1P"[1P"[1P"[1P"[C"a"d"d"e"d" "^C
+]777;notify;Command completed;git add .]0;student@workstation:~/git/DO180-apps]7;file://workstation.lab.example.com/home/student/git/DO180-apps[student@workstation DO180-apps]$ exit
+exit
+
+Script done on 2023-02-19 12:43:24-05:00
