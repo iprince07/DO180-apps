@@ -1,0 +1,405 @@
+Script started on 2023-02-21 00:23:30-05:00
+]777;notify;Command completed;exit]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;exit]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ lab manage-review start
+
+Setting up workstation for the Lab: Managing Containers
+
+ · Checking podman configuration...............................  [1;36mSUCCESS[0;39m
+ · Check that /home/student/local/mysql does not exist.........  [1;36mSUCCESS[0;39m
+ · Downloading starter project.................................  [1;36mSUCCESS[0;39m
+ · Downloading solution project................................  [1;36mSUCCESS[0;39m
+
+Setup successful. Please proceed with the exercise.
+
+]777;notify;Command completed;lab manage-review start]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;lab manage-review start]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ mkdir /[K-vp /home/student/local/l[Kmys/[Kql
+mkdir: created directory '/home/student/local/mysql'
+]777;notify;Command completed;mkdir -vp /home/student/local/mysql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mkdir -vp /home/student/local/mysql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mkdir -vp /home/student/local/mysql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ sudo semanage fcontext -a -t container_file_t \
+>  '/home/student/local/mysql(/.*)?'
+]777;notify;Command completed;sudo semanage fcontext -a -t container_file_t  '/home/student/local/mysql(/.*)?']0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;sudo semanage fcontext -a -t container_file_t  '/home/student/local/mysql(/.*)?']0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;sudo semanage fcontext -a -t container_file_t  '/home/student/local/mysql(/.*)?']0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ sudo restorecon -R /homest[K[K/student/local/mysql/
+]777;notify;Command completed;sudo restorecon -R /home/student/local/mysql/]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;sudo restorecon -R /home/student/local/mysql/]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;sudo restorecon -R /home/student/local/mysql/]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman unshare chown -Rv 27:27 /home/student/local/mysql
+changed ownership of '/home/student/local/mysql' from root:root to 27:27
+]777;notify;Command completed;podman unshare chown -Rv 27:27 /home/student/local/mysql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman unshare chown -Rv 27:27 /home/student/local/mysql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman unshare chown -Rv 27:27 /home/student/local/mysql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman login registry.redhat-[K.io
+Authenticating with existing credentials for registry.redhat.io
+Existing credentials are valid. Already logged in to registry.redhat.io
+]777;notify;Command completed;podman login registry.redhat.io]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman login registry.redhat.io]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman login registry.redhat.io]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman run --name mysql-1 -p 13306:3306 \
+>  -d -v /home/student/local/mysql:/var/lib/mysql/data \
+>  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 \
+>  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 \
+>  registry.redhat.io/rhel8/mysql-80:1
+Trying to pull registry.redhat.io/rhel8/mysql-80:1...
+Getting image source signatures
+Checking if image destination supports signatures
+Copying blob ea0a20a2c448 [--------------------------------------] 0.0b / 0.0b
+Copying blob 1eb1cc491a1b [--------------------------------------] 0.0b / 0.0b
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+[2A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [>-------------------------------------] 2.0MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=>------------------------------------] 5.2MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [==>-----------------------------------] 11.2MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [====>---------------------------------] 17.1MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [======>-------------------------------] 23.5MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [========>-----------------------------] 29.7MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [==========>---------------------------] 35.7MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [============>-------------------------] 42.9MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [==============>-----------------------] 49.7MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [================>---------------------] 56.0MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [==================>-------------------] 62.0MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [====================>-----------------] 67.4MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [======================>---------------] 72.8MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=======================>--------------] 78.3MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=========================>------------] 84.6MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [===========================>----------] 91.2MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=============================>--------] 96.8MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [===============================>------] 101.8MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [=================================>----] 107.7MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [==================================>---] 112.8MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [====================================>-] 117.7MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a [======================================] 122.0MiB / 122.0MiB
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+[3A[JCopying blob ea0a20a2c448 skipped: already exists  
+Copying blob 1eb1cc491a1b skipped: already exists  
+Copying blob cae0dd0bf64a done  
+Copying config ae055a002c [======================================] 17.8KiB / 17.8KiB
+[1A[JCopying config ae055a002c done  
+Writing manifest to image destination
+Storing signatures
+853686c87f806f382ee42a82258018eb67bc8e3ec7de4a35d0cd48f1c261f0c9
+]777;notify;Command completed;podman run --name mysql-1 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman run --name mysql-1 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman ps --format="{{.ID}} {{.Names}}"
+853686c87f80 mysql-1
+]777;notify;Command completed;podman ps --format="{{.ID}} {{.Names}}"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps --format="{{.ID}} {{.Names}}"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps --format="{{.ID}} {{.Names}}"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 \
+>  items < /home/student/DO180/labs/manage-review/db.sql
+mysql: [Warning] Using a password on the command line interface can be insecure.
+]777;notify;Command completed;mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306  items < /home/student/DO180/labs/manage-review/db.sql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306  items < /home/student/DO180/labs/manage-review/db.sql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306  items < /home/student/DO180/labs/manage-review/db.sql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306  items < /home/student/DO180/labs/manage-review/db.sql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306  items < /home/student/DO180/labs/manage-review/db.sql]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ ms[Kysql [K[K[K[K[K[Kpodman port -l
+3306/tcp -> 0.0.0.0:13306
+]777;notify;Command completed;podman port -l]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman port -l]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman port -l]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 \
+> items -e "SELECT * FROM Item"
+mysql: [Warning] Using a password on the command line interface can be insecure.
++----+-------------------+------+
+| id | description       | done |
++----+-------------------+------+
+|  1 | Pick up newspaper |    0 |
+|  2 | Buy groceries     |    1 |
++----+-------------------+------+
+]777;notify;Command completed;mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 items -e "SELECT * FROM Item"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 items -e "SELECT * FROM Item"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mysql -uuser1 -h 127.0.0.1 -pmypa55 -P13306 items -e "SELECT * FROM Item"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman stop mysql-1 
+mysql-1
+]777;notify;Command completed;podman stop mysql-1 ]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman stop mysql-1 ]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman stop mysql-1 ]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman ps
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+]777;notify;Command completed;podman ps]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman run --name mysql-2 -p 13306:3306 \
+>  -d -v /home/student/local/mysql:/var/lib/mysql/data \
+>  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 \
+>  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 \
+>  registry.redhat.io/rhel8/mysql-80:1
+dfb6ada608780b3f63a3346e7f0931514a788f106fd7a11e3de455b10e5e8fff
+]777;notify;Command completed;podman run --name mysql-2 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman run --name mysql-2 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman run --name mysql-2 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman ps
+CONTAINER ID  IMAGE                                COMMAND     CREATED        STATUS            PORTS                    NAMES
+dfb6ada60878  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  4 seconds ago  Up 4 seconds ago  0.0.0.0:13306->3306/tcp  mysql-2
+]777;notify;Command completed;podman ps]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman ps --format="{{.ID}} {{.Names}}"
+dfb6ada60878 mysql-2
+]777;notify;Command completed;podman ps --format="{{.ID}} {{.Names}}"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps --format="{{.ID}} {{.Names}}"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps --format="{{.ID}} {{.Names}}"]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman ps-a[K[K -a /tmp/my-continers
+Error: `podman ps` takes no arguments
+]777;notify;Command completed;podman ps -a /tmp/my-continers]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman ps -a /tmp/my-continers>/tmp/my-continers /tmp/my-continers
+]777;notify;Command completed;podman ps -a > /tmp/my-continers]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps -a > /tmp/my-continers]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps -a > /tmp/my-continers]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ cat /tmp/p[Kmy-continers 
+CONTAINER ID  IMAGE                                COMMAND     CREATED             STATUS                    PORTS                    NAMES
+853686c87f80  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  4 minutes ago       Exited (0) 2 minutes ago  0.0.0.0:13306->3306/tcp  mysql-1
+dfb6ada60878  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  About a minute ago  Up About a minute ago     0.0.0.0:13306->3306/tcp  mysql-2
+]777;notify;Command completed;cat /tmp/my-continers ]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;cat /tmp/my-continers ]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;cat /tmp/my-continers ]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman exec -it mysql-2 /bin/bash
+bash-4.4$ 
+bash-4.4$ 
+bash-4.4$ mysql -uroot
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.30 Source distribution
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| items              |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> use items;
+Database changed
+mysql> 
+mysql> 
+mysql> show tables;
++-----------------+
+| Tables_in_items |
++-----------------+
+| Item            |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> select * from Item;
++----+-------------------+------+
+| id | description       | done |
++----+-------------------+------+
+|  1 | Pick up newspaper |    0 |
+|  2 | Buy groceries     |    1 |
++----+-------------------+------+
+2 rows in set (0.01 sec)
+
+mysql> 
+mysql> exit
+Bye
+bash-4.4$ exit
+exit
+]777;notify;Command completed;podman exec -it mysql-2 /bin/bash]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman exec -it mysql-2 /bin/bash]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman exec -it mysql-2 /bin/bash]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ myslq[K[K[K[K[Kmysql -uuser2 [K[K1 -h workstation.lab.example.com \
+> -pmypa55 -P13306 items
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.30 Source distribution
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+mysql> INSERT INTO Item (description, done) VALUES ('Finished lab', 1);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> 
+mysql> exit
+Bye
+]777;notify;Command completed;mysql -uuser1 -h workstation.lab.example.com -pmypa55 -P13306 items]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mysql -uuser1 -h workstation.lab.example.com -pmypa55 -P13306 items]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;mysql -uuser1 -h workstation.lab.example.com -pmypa55 -P13306 items]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman rm mysql-1
+853686c87f806f382ee42a82258018eb67bc8e3ec7de4a35d0cd48f1c261f0c9
+]777;notify;Command completed;podman rm mysql-1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman rm mysql-1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman rm mysql-1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman rm mysql-1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podma [Km [K[Kn ps -a
+CONTAINER ID  IMAGE                                COMMAND     CREATED        STATUS            PORTS                    NAMES
+dfb6ada60878  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  4 minutes ago  Up 4 minutes ago  0.0.0.0:13306->3306/tcp  mysql-2
+]777;notify;Command completed;podman ps -a]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps -a]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps -a]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ lab manage-review grade
+
+Grading the student's work for the Lab: Managing Containers
+
+ · Checking if the /home/student/local/mysql folder exists.....  [1;32mPASS[0;39m
+ · Checking if owner was changed...............................  [1;32mPASS[0;39m
+ · Checking if the container mysql-1 was created...............  [1;31mFAIL[0;39m
+ · Checking if the mysql-2 container is running................  [1;32mPASS[0;39m
+ · Checking tables for the 'Finished lab' row..................  [1;32mPASS[0;39m
+]777;notify;Command completed;lab manage-review grade]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;lab manage-review grade]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ [7P(reverse-i-search)`':[Cm': lab manage-review grade[5Py': podman rm mysql-1[1@s[C[C[C[C[C[C[C[C[C[C[C[C[C[1@q[C[C[C[C[C[C[C[C[C[C[C[C[C[1@l[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8@failed reverse-i-search)`mysql1[C[C[C[C[C[C[C[C[C[C[C[C[C^C
+]777;notify;Command completed;lab manage-review grade]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ ^C
+]777;notify;Command completed;lab manage-review grade]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ ^C
+]777;notify;Command completed;lab manage-review grade]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ history | mysql-1
+bash: mysql-1: command not found...
+]777;notify;Command completed;history | mysql-1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ history | mysql-1gmysql-1rmysql-1emysql-1 mysql-1[1Pmysql-1pmysql-1 mysql-1
+  145  oc describe pod [01;31m[Kmysql-1[m[K-deploy
+  152  oc port-forward [01;31m[Kmysql-1[m[K-5vfn4 3306:3306
+  155  oc port-forward [01;31m[Kmysql-1[m[K-bt5n8 3306:3306
+  320  oc describe pod [01;31m[Kmysql-1[m[K-ltdt9 
+  324  oc port-forward [01;31m[Kmysql-1[m[K-5vfn4 3306:3306
+  325  oc port-forward [01;31m[Kmysql-1[m[K-ltdt9 3306:3306
+ 1005  podman run --name [01;31m[Kmysql-1[m[K -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1
+ 1010  podman stop [01;31m[Kmysql-1[m[K 
+ 1020  podman rm [01;31m[Kmysql-1[m[K
+ 1023  history | [01;31m[Kmysql-1[m[K
+ 1024  history | grep [01;31m[Kmysql-1[m[K
+]777;notify;Command completed;history | grep mysql-1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman run --name mysql-1 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e  MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1
+Error: rootlessport listen tcp 0.0.0.0:13306: bind: address already in use
+]777;notify;Command completed;podman run --name mysql-1 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman run --name mysql-1 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman run --name mysql-1 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman run --name mysql-1 -p 13306:3306  -d -v /home/student/local/mysql:/var/lib/mysql/data  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  registry.redhat.io/rhel8/mysql-80:1]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman -[Kps -a
+CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS            PORTS                    NAMES
+dfb6ada60878  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  6 minutes ago   Up 6 minutes ago  0.0.0.0:13306->3306/tcp  mysql-2
+4aa8f320d01a  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  24 seconds ago  Created           0.0.0.0:13306->3306/tcp  mysql-1
+]777;notify;Command completed;podman ps -a]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps -a]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;podman ps -a]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ lab manage-review grade
+
+Grading the student's work for the Lab: Managing Containers
+
+ · Checking if the /home/student/local/mysql folder exists.....  [1;32mPASS[0;39m
+ · Checking if owner was changed...............................  [1;32mPASS[0;39m
+ · Checking if the container mysql-1 was created...............  [1;31mFAIL[0;39m
+ · Checking if the mysql-2 container is running................  [1;32mPASS[0;39m
+ · Checking tables for the 'Finished lab' row..................  [1;32mPASS[0;39m
+]777;notify;Command completed;lab manage-review grade]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;lab manage-review grade]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ 
+]777;notify;Command completed;lab manage-review grade]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman -a
+Error: unknown shorthand flag: 'a' in -a
+See 'podman --help'
+]777;notify;Command completed;podman -a]0;student@workstation:~/chap3]7;file://workstation.lab.example.com/home/student/chap3[student@workstation chap3]$ podman ps -a
+CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS             PORTS                    NAMES
+dfb6ada60878  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  12 minutes ago  Up 12 minutes ago  0.0.0.0:13306->3306/tcp  mysql-2
+4aa8f320d01a  registry.redhat.io/rhel8/mysql-80:1  run-mysqld  6 minutes ago   Created            0.0.0.0:13306->3306/tcp  mysql-1
+
+Script done on 2023-02-21 00:43:13-05:00
